@@ -1,10 +1,16 @@
 # AWS-Fargate-with-Sysdig
 
-## Fargate bundle
+## Introduction
 
 This repo contains a terraform bundle to deploy a demo environment in a AWS infrastructure with AWS ECS and AWS Fargate.
+A few dummy workloads are deployed as Fargate tasks using ECS as a serverless container technology. Sysdig instrumentation is also deployed alongside each of these workloads running as Fargate tasks. The data collected from every workload by the Sysdig instrumentation agent is pushed to the Sysdig Orchestrator agent which is running in a separate AWS Fargate task and ECS cluster.
+Sysdig Orchestrator agent ECS cluster and any other workload instrumented with Sysdig for AWS Fargate must use the same AWS vpc network traffic, otherwise Sysdig Orchestrator agent won't be able to gather workload data.
 
-## Usage
+Finally the Sysdig Orchestrator agent push all the data gathered from instrumented workloads to the Sysdig SaaS backend collector.
+
+## Usage
+
+This section contains instructions to deploy a new AWS environment with Terraform for testing purposes.
 
 ### Variables
 
